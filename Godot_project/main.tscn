@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d28s7ptnux27g"]
+[gd_scene load_steps=22 format=3 uid="uid://d28s7ptnux27g"]
 
 [ext_resource type="Script" path="res://character_body_3d.gd" id="1_fv0bn"]
 [ext_resource type="Texture2D" uid="uid://5ghdg5bkgmtb" path="res://assets/floor_pavement_2k.blend/textures/floor_pavement_diff_2k.jpg" id="1_l72i4"]
@@ -42,6 +42,14 @@ uv1_scale = Vector3(20, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h4kn1"]
 size = Vector3(0.54187, 0.527832, 1.06775)
+
+[sub_resource type="BoxMesh" id="BoxMesh_482dm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5ho5"]
+albedo_texture = ExtResource("2_ksrvi")
+uv1_scale = Vector3(20, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_klt5n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rmefo"]
 
@@ -115,6 +123,16 @@ skeleton = NodePath("../planeMesh/StaticBody3D")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="room/BedSingle/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.676873, 0.143739, 0.509804)
 shape = SubResource("BoxShape3D_h4kn1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="room"]
+transform = Transform3D(10, 0, 0, 0, 4, 0, 0, 0, 1, 5, 2, 0)
+mesh = SubResource("BoxMesh_482dm")
+surface_material_override/0 = SubResource("StandardMaterial3D_c5ho5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="room/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_klt5n")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.19006, 0)
