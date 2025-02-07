@@ -1,0 +1,119 @@
+[gd_scene load_steps=17 format=3 uid="uid://d28s7ptnux27g"]
+
+[ext_resource type="Script" path="res://character_body_3d.gd" id="1_fv0bn"]
+[ext_resource type="Texture2D" uid="uid://5ghdg5bkgmtb" path="res://assets/floor_pavement_2k.blend/textures/floor_pavement_diff_2k.jpg" id="1_l72i4"]
+[ext_resource type="Texture2D" uid="uid://magyh80mcuw4" path="res://assets/stone_tile_wall_2k.blend/textures/stone_tile_wall_disp_2k.png" id="2_ksrvi"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k75t0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rocsc"]
+albedo_texture = ExtResource("1_l72i4")
+uv1_scale = Vector3(10, 30, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c3w2o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_h3rf0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6d24"]
+albedo_texture = ExtResource("2_ksrvi")
+uv1_scale = Vector3(20, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8cyll"]
+size = Vector3(1, 1, 0.986328)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fcl5"]
+albedo_texture = ExtResource("2_ksrvi")
+uv1_scale = Vector3(20, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_psjc6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv01l"]
+albedo_texture = ExtResource("2_ksrvi")
+uv1_scale = Vector3(20, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7vmr4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i43kx"]
+albedo_texture = ExtResource("2_ksrvi")
+uv1_scale = Vector3(20, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nubdg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rmefo"]
+
+[node name="main" type="Node3D"]
+
+[node name="room" type="Node3D" parent="."]
+
+[node name="planeMesh" type="MeshInstance3D" parent="room"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_k75t0")
+surface_material_override/0 = SubResource("StandardMaterial3D_rocsc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="room/planeMesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room/planeMesh/StaticBody3D"]
+transform = Transform3D(3, 0, 0, 0, 0.1, 0, 0, 0, 3, 0.0219423, 0.0542747, 0.00934315)
+shape = SubResource("BoxShape3D_c3w2o")
+
+[node name="wall1" type="MeshInstance3D" parent="room"]
+transform = Transform3D(20, 0, 0, 0, 4, 0, 0, 0, 1, 0, 2, 10)
+mesh = SubResource("BoxMesh_h3rf0")
+skeleton = NodePath("../planeMesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_s6d24")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="room/wall1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room/wall1/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00683594)
+shape = SubResource("BoxShape3D_8cyll")
+
+[node name="wall2" type="MeshInstance3D" parent="room"]
+transform = Transform3D(-8.74228e-07, 0, 1, 0, 4, 0, -20, 0, -4.37114e-08, 10, 2, 0)
+mesh = SubResource("BoxMesh_h3rf0")
+skeleton = NodePath("../planeMesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_0fcl5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="room/wall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room/wall2/StaticBody3D"]
+shape = SubResource("BoxShape3D_psjc6")
+
+[node name="wall3" type="MeshInstance3D" parent="room"]
+transform = Transform3D(-0.011408, 0.00138789, 1, -0.00685483, 4, -0.00034718, -20, -0.0013718, -0.000570272, -10, 2, 0)
+mesh = SubResource("BoxMesh_h3rf0")
+skeleton = NodePath("../planeMesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_dv01l")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="room/wall3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room/wall3/StaticBody3D"]
+shape = SubResource("BoxShape3D_7vmr4")
+
+[node name="wall4" type="MeshInstance3D" parent="room"]
+transform = Transform3D(20, 0.00165876, 0.000814025, -0.00830508, 4, 0.00070148, -0.0162747, -0.00280726, 0.999999, 0, 2, -10)
+mesh = SubResource("BoxMesh_h3rf0")
+skeleton = NodePath("../planeMesh")
+surface_material_override/0 = SubResource("StandardMaterial3D_i43kx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="room/wall4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room/wall4/StaticBody3D"]
+shape = SubResource("BoxShape3D_nubdg")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.19006, 0)
+script = ExtResource("1_fv0bn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45787, 0)
+shape = SubResource("CapsuleShape3D_rmefo")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(0.999958, 0, -0.00914537, 0, 1, 0, 0.00914537, 0, 0.999958, 0, 1.08006, 0)
+fov = 90.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.998651, 0.00474312, 0.051718, -0.0449372, 0.57815, 0.814692, -0.0260366, -0.815917, 0.577583, -0.131985, 16.2372, 18.6128)
+light_color = Color(1, 0.666667, 0.552941, 1)
+light_energy = 2.0
