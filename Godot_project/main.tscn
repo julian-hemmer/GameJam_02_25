@@ -10,7 +10,7 @@
 albedo_texture = ExtResource("1_l72i4")
 uv1_scale = Vector3(10, 30, 30)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_c3w2o"]
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_yj43c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_h3rf0"]
 
@@ -54,7 +54,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rocsc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="room/planeMesh/StaticBody3D"]
 transform = Transform3D(3, 0, 0, 0, 0.1, 0, 0, 0, 3, 0.0219423, 0.0542747, 0.00934315)
-shape = SubResource("BoxShape3D_c3w2o")
+shape = SubResource("HeightMapShape3D_yj43c")
 
 [node name="wall1" type="MeshInstance3D" parent="room"]
 transform = Transform3D(20, 0, 0, 0, 4, 0, 0, 0, 1, 0, 2, 10)

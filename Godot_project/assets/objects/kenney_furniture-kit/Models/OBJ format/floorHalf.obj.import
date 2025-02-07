@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://by38f7y7tt4yd"
+path="res://.godot/imported/floorHalf.obj-049457ffb4b4bc68a8fb411b534446af.mesh"
+
+[deps]
+
+files=["res://.godot/imported/floorHalf.obj-049457ffb4b4bc68a8fb411b534446af.mesh"]
+
+source_file="res://assets/objects/kenney_furniture-kit/Models/OBJ format/floorHalf.obj"
+dest_files=["res://.godot/imported/floorHalf.obj-049457ffb4b4bc68a8fb411b534446af.mesh", "res://.godot/imported/floorHalf.obj-049457ffb4b4bc68a8fb411b534446af.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

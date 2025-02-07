@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://doqkfk6pt28bm"
+path="res://.godot/imported/kitchenFridgeSmall.obj-6844978133e8cfa44adbdd54265ebf48.mesh"
+
+[deps]
+
+files=["res://.godot/imported/kitchenFridgeSmall.obj-6844978133e8cfa44adbdd54265ebf48.mesh"]
+
+source_file="res://assets/objects/kenney_furniture-kit/Models/OBJ format/kitchenFridgeSmall.obj"
+dest_files=["res://.godot/imported/kitchenFridgeSmall.obj-6844978133e8cfa44adbdd54265ebf48.mesh", "res://.godot/imported/kitchenFridgeSmall.obj-6844978133e8cfa44adbdd54265ebf48.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

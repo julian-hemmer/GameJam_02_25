@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d23g3fg0gqp8h"
+path="res://.godot/imported/wallHalf.obj-52f7dae69a78747b4fb4204ef1a2a26c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wallHalf.obj-52f7dae69a78747b4fb4204ef1a2a26c.mesh"]
+
+source_file="res://assets/objects/kenney_furniture-kit/Models/OBJ format/wallHalf.obj"
+dest_files=["res://.godot/imported/wallHalf.obj-52f7dae69a78747b4fb4204ef1a2a26c.mesh", "res://.godot/imported/wallHalf.obj-52f7dae69a78747b4fb4204ef1a2a26c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

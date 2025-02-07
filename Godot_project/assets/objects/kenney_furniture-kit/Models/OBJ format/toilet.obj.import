@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://i25n4xcwp0fy"
+path="res://.godot/imported/toilet.obj-50fe5b45dff35dac573a5e63bcdb350c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/toilet.obj-50fe5b45dff35dac573a5e63bcdb350c.mesh"]
+
+source_file="res://assets/objects/kenney_furniture-kit/Models/OBJ format/toilet.obj"
+dest_files=["res://.godot/imported/toilet.obj-50fe5b45dff35dac573a5e63bcdb350c.mesh", "res://.godot/imported/toilet.obj-50fe5b45dff35dac573a5e63bcdb350c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
