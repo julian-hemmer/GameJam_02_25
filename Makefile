@@ -60,7 +60,7 @@ OBJ		= 	$(SRC:src/%.c=build/obj/%.o)
 
 LIBS	=	-lcsfml-window -lcsfml-graphics -lcsfml-system -lm
 
-NAME	= 	PokemonRed
+NAME	= 	Archilusion
 
 build/obj/%.o : src/%.c
 	@mkdir -p $@
