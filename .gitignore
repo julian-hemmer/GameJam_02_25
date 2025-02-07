@@ -1,0 +1,15 @@
+PokemonRed
+
+*.gcno
+*.gcda
+
+*#*#
+*~
+
+*.a
+*.o
+
+log/
+
+build/
+.vscode/
