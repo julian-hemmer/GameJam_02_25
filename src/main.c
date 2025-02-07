@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2025
-** pokemon_red
+** archilusion
 ** File description:
 ** main
 */

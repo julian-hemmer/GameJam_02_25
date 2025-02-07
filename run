@@ -1,7 +1,7 @@
 #!/bin/bash
 
 binary_path="./"
-binary_name="PokemonRed"
+binary_name="Archilusion"
 execution_path="$binary_path$binary_name"
 
 make re
