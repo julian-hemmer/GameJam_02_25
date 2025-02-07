@@ -1,0 +1,14 @@
+#MAP#
+ID:1
+#TILE#
+TILE={
+    ID=1
+    FILE="image.png"
+    STATE[0]=0;0;250
+    STATE[1]=100;0;250
+    STATE[2]=0;100;250
+    STATE[3]=100;100;250
+}
+#CONTENT#
+(1;1;5)(1;2;5)
+(2;1;5)(2;2;5)
