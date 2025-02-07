@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqbfhohly5qvv"]
+
+[ext_resource type="ArrayMesh" uid="uid://cbe28kvdyk3jq" path="res://assets/objects/kenney_furniture-kit/Models/OBJ format/tableGlass.obj" id="1_gsnfp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aqxdn"]
+points = PackedVector3Array(-0.841488, 0, 0, -0.841488, 0, 0.447373, -0.841488, 0.326734, 0, 0, 0, 0, -0.841488, 0.326734, 0.447373, 0, 0, 0.447373, 0, 0.326734, 0, 0, 0.326734, 0.447373)
+
+[node name="table" type="RigidBody3D"]
+collision_layer = 6
+collision_mask = 3
+mass = 10.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+layers = 2
+mesh = ExtResource("1_gsnfp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_aqxdn")

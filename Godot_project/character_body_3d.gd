@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export var speed = 5.0
-@export var jump_force = 4.0
+@export var jump_force = 5.0
 @export var gravity = 9.8
 @export var camera_sensitivity = 0.005
 @onready var camera = $Camera3D
