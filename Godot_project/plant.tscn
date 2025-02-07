@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c52kj4sokd757"]
+
+[ext_resource type="ArrayMesh" uid="uid://b8cwpopbpy50h" path="res://assets/objects/kenney_furniture-kit/Models/OBJ format/pottedPlant.obj" id="1_cs1ya"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7kb3x"]
+points = PackedVector3Array(-2.07499e-05, 0.515096, 0.120731, 0.106009, 0.654017, -2.36332e-05, -0.10603, 0.654017, -2.36332e-05, -0.085791, 0.243016, 0.0495167, -2.07499e-05, 0.243016, 0.0990571, 0.0857702, 0.243016, 0.0495167, -2.07499e-05, 0.515096, -0.120731, 0.0857702, 0.243016, -0.0495404, -0.085791, 0.243016, -0.0495404, -0.0675658, 0, 0.0389988, -2.07499e-05, 0, 0.0779977, 0.0675451, 0, 0.0389988, -2.07499e-05, 0.243016, -0.0990807, 0.0675451, 0, -0.0390225, -0.0675658, 0, -0.0390225, -2.07499e-05, 0, -0.0780213)
+
+[node name="plant" type="RigidBody3D"]
+collision_layer = 6
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+mesh = ExtResource("1_cs1ya")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_7kb3x")

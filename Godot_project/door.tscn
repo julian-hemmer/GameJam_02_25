@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://csg02fpn8dtky"]
+
+[ext_resource type="ArrayMesh" uid="uid://ct3obtmu3hpha" path="res://assets/objects/kenney_furniture-kit/Models/OBJ format/wallDoorwayWide.obj" id="1_hxgkp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uhg0i"]
+points = PackedVector3Array(-1, -2.13695e-16, -4.86523e-06, -0.957713, -2.13695e-16, -0.01955, -1, -2.13695e-16, 0.0499961, -1, 1.28941, -4.86523e-06, -0.0423845, -2.13695e-16, -0.01955, -0.957713, 1.00943, -0.01955, -0.957713, -2.13695e-16, 0.06955, -1, 1.28941, 0.0499961, 0, 1.28941, -4.86523e-06, 0, -2.13695e-16, -4.86523e-06, -0.0423845, 1.00943, -0.01955, -0.0423845, -2.13695e-16, 0.06955, -0.957713, 1.00943, 0.06955, 0, 1.28941, 0.0499961, 0, -2.13695e-16, 0.0499961, -0.0423845, 1.00943, 0.06955)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_hxgkp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.260412, 0, 0, 0, 1, 0, 0.976056, 0)
+shape = SubResource("ConvexPolygonShape3D_uhg0i")

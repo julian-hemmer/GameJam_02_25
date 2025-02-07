@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr7pd0ol5lhc5"]
+
+[ext_resource type="ArrayMesh" uid="uid://c8meofhsn6vs6" path="res://assets/objects/kenney_furniture-kit/Models/OBJ format/televisionModern.obj" id="1_a7jne"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(7.24293, 0, 0, 0, 2.86412, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_a7jne")
