@@ -49,11 +49,3 @@ fclean:
 
 	@echo "\e[92mRemove following file: [\e[90m$(NAME), *.gcda, *.gcdo\e[92m]"
 	@rm -f $(NAME) *.gcda *.gcdo
-
-run: re
-	@echo "\e[32mStarting \e[31m$(NAME)\e[32m.\e[0m"
-	@./PokemonRed
-
-vrun: re
-	@echo "\e[32mStarting \e[31m$(NAME)\e[32m with \e[31mvalgrind\e[32m.\e[0m"
-	@valgrind ./PokemonRed
