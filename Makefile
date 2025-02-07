@@ -6,49 +6,7 @@
 ##
 
 SRC	= \
-	src/main.c	\
-	\
-	src/logger/logger.c	\
-	src/logger/type/info.c	\
-	src/logger/type/error.c	\
-	\
-	src/event/event_sort.c	\
-	src/event/event_destroyer.c	\
-	src/event/event_dumper.c	\
-	src/event/event_processor.c	\
-	src/event/event_registor.c	\
-	src/event/resolver/button/csfml_button_map.c	\
-	src/event/resolver/event/csfml_event_map.c	\
-	src/event/resolver/event/csfml_event_mouse_pressed.c	\
-	src/event/resolver/event/csfml_event_mouse_released.c	\
-	src/event/resolver/event/csfml_event_window_closed.c	\
-	src/event/handler/pkm_handler_window_close.c	\
-	\
-	src/camera/camera.c	\
-	src/camera/camera_handler.c	\
-	src/camera/camera_convertor.c	\
-	src/camera/draw/camera_draw_line.c	\
-	\
-	src/map/map_setuper.c	\
-	src/map/map_destroyer.c	\
-	src/map/map_loader.c	\
-	src/map/map_renderer.c	\
-	\
-	src/position/convertor/position_float_convertor.c	\
-	\
-	src/position/constructor/position_float_constructor.c	\
-	\
-	src/delta/delta.c	\
-	\
-	src/game_loader.c	\
-	src/game_launcher.c	\
-	src/game_destroyer.c	\
-	\
-	src/printf/my_asprintf.c	\
-	src/printf/my_asvprintf.c	\
-	\
-	src/util/file_util.c	\
-	src/util/string_util.c
+	src/main.c
 
 INCLUDE	=	-iquote./include -iquote./include/util
 
