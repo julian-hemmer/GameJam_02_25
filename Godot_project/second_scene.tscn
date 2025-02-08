@@ -1,11 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://dafp7fg80k45d"]
+[gd_scene load_steps=28 format=3 uid="uid://dafp7fg80k45d"]
 
 [ext_resource type="Texture2D" uid="uid://ieevmlab147g" path="res://assets/plastered_wall_2k.blend/textures/plastered_wall_diff_2k.jpg" id="1_0p2sv"]
+[ext_resource type="Texture2D" uid="uid://d3cnr6k425pam" path="res://assets/image-removebg-preview.png" id="2_3a8ml"]
 [ext_resource type="Texture2D" uid="uid://b6jpb2ceac2ah" path="res://assets/concrete_floor_worn_001_2k.blend/textures/concrete_floor_worn_001_diff_2k.jpg" id="2_guhhf"]
+[ext_resource type="PackedScene" uid="uid://b3nrubroxt440" path="res://walllamp.tscn" id="3_kvobc"]
 [ext_resource type="PackedScene" uid="uid://lv24m3k7fvv6" path="res://chair.tscn" id="3_lvc5t"]
 [ext_resource type="PackedScene" uid="uid://cbi55eu0qccui" path="res://bass_round_table.tscn" id="3_nruky"]
 [ext_resource type="PackedScene" uid="uid://dqbfhohly5qvv" path="res://table.tscn" id="5_kyaj4"]
 [ext_resource type="PackedScene" uid="uid://bbp018rko70v8" path="res://tabme_haute.tscn" id="6_vgdla"]
+[ext_resource type="PackedScene" uid="uid://dljmydsah6ua3" path="res://sofa.tscn" id="7_0hlir"]
+[ext_resource type="PackedScene" uid="uid://dudchwpqwx5s0" path="res://books.tscn" id="7_50hkk"]
+[ext_resource type="PackedScene" uid="uid://d0ioj8cy5c6sc" path="res://sofa_chair.tscn" id="8_etx68"]
+[ext_resource type="Script" path="res://tv.gd" id="9_hor7c"]
+[ext_resource type="VideoStream" path="res://assets/music/skibidi.ogv" id="10_um046"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2c8x2"]
 
@@ -25,6 +32,10 @@ uv1_scale = Vector3(20, 5, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_netrn"]
 size = Vector3(1, 1, 0.986328)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vy41c"]
+albedo_texture = ExtResource("2_3a8ml")
+uv1_scale = Vector3(3, 3, 3)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ttyb6"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_d7dxe"]
@@ -36,6 +47,15 @@ uv1_scale = Vector3(30, 30, 30)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f1xsk"]
 points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_64hhp"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ya4ml"]
+viewport_path = NodePath("MeshInstance3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pnph"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_ya4ml")
 
 [node name="Node3D" type="Node3D"]
 
@@ -77,18 +97,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_n5xvy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00683594)
 shape = SubResource("BoxShape3D_0wqqa")
 
-[node name="wall2" type="MeshInstance3D" parent="walls"]
-transform = Transform3D(5, 0, 0, 0, 4, 0, 0, 0, 1, -8, 2, 9.5)
-mesh = SubResource("BoxMesh_s6qfh")
-skeleton = NodePath("../../../floor")
-surface_material_override/0 = SubResource("StandardMaterial3D_r0ixr")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="walls/wall2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00683594)
-shape = SubResource("BoxShape3D_netrn")
-
 [node name="wall4" type="MeshInstance3D" parent="walls"]
 transform = Transform3D(30, 0, 0, 0, 4, 0, 0, 0, 1, 10, 2, 12.5)
 mesh = SubResource("BoxMesh_s6qfh")
@@ -122,6 +130,18 @@ surface_material_override/0 = SubResource("StandardMaterial3D_r0ixr")
 [node name="StaticBody3D" type="StaticBody3D" parent="walls/wall9"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall9/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00683594)
+shape = SubResource("BoxShape3D_netrn")
+
+[node name="wall32" type="MeshInstance3D" parent="walls"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 1, 6.37766, 2, -1.17218)
+mesh = SubResource("BoxMesh_s6qfh")
+skeleton = NodePath("../../../floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_vy41c")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="walls/wall32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall32/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00683594)
 shape = SubResource("BoxShape3D_netrn")
 
@@ -376,6 +396,17 @@ surface_material_override/0 = SubResource("StandardMaterial3D_r0ixr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall3/StaticBody3D"]
 shape = SubResource("BoxShape3D_ttyb6")
 
+[node name="wall31" type="MeshInstance3D" parent="walls"]
+transform = Transform3D(-4.37114e-08, 0, -4.68315, 0, 4, 0, 1, 0, -2.04707e-07, -7.32977, 2, 10.4756)
+mesh = SubResource("BoxMesh_s6qfh")
+skeleton = NodePath("../../../floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_r0ixr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="walls/wall31"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall31/StaticBody3D"]
+shape = SubResource("BoxShape3D_ttyb6")
+
 [node name="wall5" type="MeshInstance3D" parent="walls"]
 transform = Transform3D(0.1, 0, 0, 0, 4, 0, 0, 0, 5, 15.5, 2, 11.5)
 mesh = SubResource("BoxMesh_s6qfh")
@@ -410,6 +441,21 @@ surface_material_override/0 = SubResource("StandardMaterial3D_pw4uu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/floor/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_f1xsk")
 
+[node name="applique" parent="walls" instance=ExtResource("3_kvobc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.51227, 3.42609, 9.99148)
+
+[node name="applique2" parent="walls" instance=ExtResource("3_kvobc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.05883, 3.42609, 11.9104)
+
+[node name="applique3" parent="walls" instance=ExtResource("3_kvobc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13.064, 3.42609, 11.9104)
+
+[node name="applique4" parent="walls" instance=ExtResource("3_kvobc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.2008, 3.42609, 11.9104)
+
+[node name="applique5" parent="walls" instance=ExtResource("3_kvobc")]
+transform = Transform3D(-0.0210833, 0, 1.99989, 0, 2, 0, -1.99989, 0, -0.0210833, 24.436, 3.42609, 6.35663)
+
 [node name="Stuffs" type="Node3D" parent="."]
 
 [node name="RigidBody3D" parent="Stuffs" instance=ExtResource("3_nruky")]
@@ -417,18 +463,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26271, 0.988246, 8.20601)
 
 [node name="RigidBody3D2" parent="Stuffs" instance=ExtResource("3_nruky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.448746, 0.988246, 8.54421)
-
-[node name="chair" parent="Stuffs" instance=ExtResource("3_lvc5t")]
-transform = Transform3D(0.195532, 0.00342802, -0.980691, -0.00178896, 0.999994, 0.00313881, 0.980696, 0.00114068, 0.195537, -2.98362, 1.4032, 8.54762)
-
-[node name="chair2" parent="Stuffs" instance=ExtResource("3_lvc5t")]
-transform = Transform3D(0.864737, 0.00312336, -0.502215, -0.00178896, 0.999993, 0.00313881, 0.502222, -0.0018158, 0.864737, -2.37977, 1.4032, 9.59978)
-
-[node name="chair3" parent="Stuffs" instance=ExtResource("3_lvc5t")]
-transform = Transform3D(0.99932, 0.00190337, -0.0368326, -0.00178896, 0.999993, 0.00313881, 0.0368384, -0.00307078, 0.999317, -0.991117, 1.4032, 10.0576)
-
-[node name="chair4" parent="Stuffs" instance=ExtResource("3_lvc5t")]
-transform = Transform3D(0.92768, 0.00048763, 0.373377, -0.00178896, 0.999993, 0.00313881, -0.373373, -0.00357976, 0.927674, 0.769803, 1.4032, 9.8241)
 
 [node name="table" parent="Stuffs" instance=ExtResource("5_kyaj4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0461, 1.03123, 0.0924804)
@@ -484,6 +518,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0006, 1.04365, 2.72514)
 [node name="RigidBody3D3" parent="Stuffs" instance=ExtResource("3_nruky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1727, 1.0519, -8.48955)
 
+[node name="books" parent="Stuffs/RigidBody3D3" instance=ExtResource("7_50hkk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.873585, 0)
+
+[node name="books3" parent="Stuffs/RigidBody3D3" instance=ExtResource("7_50hkk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.37323, 0.873585, 0)
+
+[node name="books4" parent="Stuffs/RigidBody3D3" instance=ExtResource("7_50hkk")]
+transform = Transform3D(0.903373, 0, -0.428856, 0, 1, 0, 0.428856, 0, 0.903373, -6.1669, 0.889239, -0.409908)
+
+[node name="books5" parent="Stuffs/RigidBody3D3" instance=ExtResource("7_50hkk")]
+transform = Transform3D(0.365202, 0, 0.930928, 0, 1, 0, -0.930928, 0, 0.365202, -5.85414, 0.888377, -0.409908)
+
+[node name="books6" parent="Stuffs/RigidBody3D3" instance=ExtResource("7_50hkk")]
+transform = Transform3D(0.365202, 0, 0.930928, 0, 1, 0, -0.930928, 0, 0.365202, -4.14087, 0.873585, -5.0857)
+
+[node name="books7" parent="Stuffs/RigidBody3D3" instance=ExtResource("7_50hkk")]
+transform = Transform3D(-0.363934, 0, 0.931425, 0, 1, 0, -0.931425, 0, -0.363934, -4.79691, 0.873585, -5.0857)
+
+[node name="books8" parent="Stuffs/RigidBody3D3" instance=ExtResource("7_50hkk")]
+transform = Transform3D(-0.998069, 0, 0.0621111, 0, 1, 0, -0.0621111, 0, -0.998069, -4.49255, 0.873585, -4.5424)
+
+[node name="books9" parent="Stuffs/RigidBody3D3" instance=ExtResource("7_50hkk")]
+transform = Transform3D(-0.684903, 0, 0.728634, 0, 1, 0, -0.728634, 0, -0.684903, -4.96233, 0.873585, -4.5424)
+
+[node name="books2" parent="Stuffs/RigidBody3D3" instance=ExtResource("7_50hkk")]
+transform = Transform3D(-0.479106, 0, -0.877757, 0, 1, 0, 0.877757, 0, -0.479106, 0.110767, 0.881702, -0.06355)
+
 [node name="RigidBody3D4" parent="Stuffs" instance=ExtResource("3_nruky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.08657, 1.0519, -8.67882)
 
@@ -495,3 +556,61 @@ transform = Transform3D(0.12606, 0, -0.992023, 0, 1, 0, 0.992023, 0, 0.12606, 1.
 
 [node name="table5" parent="Stuffs" instance=ExtResource("5_kyaj4")]
 transform = Transform3D(0.0157945, 0, -0.999875, 0, 1, 0, 0.999875, 0, 0.0157945, 2.71961, 1.04425, -17.5819)
+
+[node name="sofa_chair" parent="Stuffs" instance=ExtResource("8_etx68")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11279, 10.2194)
+
+[node name="sofa_chair3" parent="Stuffs" instance=ExtResource("8_etx68")]
+transform = Transform3D(0.966021, 0, 0.258465, 0, 1, 0, -0.258465, 0, 0.966021, 1.20744, 1.11279, 9.81687)
+
+[node name="sofa_chair2" parent="Stuffs" instance=ExtResource("8_etx68")]
+transform = Transform3D(0.832564, 0, -0.553929, 0, 1, 0, 0.553929, 0, 0.832564, -1.32391, 1.11279, 10.3297)
+
+[node name="sofa_chair4" parent="Stuffs" instance=ExtResource("8_etx68")]
+transform = Transform3D(0.630188, 0, -0.776443, 0, 1, 0, 0.776443, 0, 0.630188, -3.06401, 1.11279, 9.54345)
+
+[node name="books" parent="Stuffs" instance=ExtResource("7_50hkk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.98692, 8.18192)
+
+[node name="sofa" parent="." instance=ExtResource("7_0hlir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.63283, 1.09874, -8.82298)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.61659, 0, 0, 0, -4.35874e-08, -0.829995, 0, 0.997163, -3.62802e-08, 19.7954, 2.9791, 0.000833035)
+mesh = SubResource("PlaneMesh_64hhp")
+surface_material_override/0 = SubResource("StandardMaterial3D_6pnph")
+script = ExtResource("9_hor7c")
+
+[node name="SubViewport" type="SubViewport" parent="MeshInstance3D"]
+size = Vector2i(1920, 1080)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MeshInstance3D/SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MeshInstance3D/SubViewport/SubViewportContainer"]
+layout_mode = 2
+stream = ExtResource("10_um046")
+autoplay = true
+expand = true
+loop = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999137, 0, 0, 0, -4.35874e-08, -0.527658, 0, 0.997163, -2.30647e-08, -3.8222, 3.07454, 0.000833035)
+mesh = SubResource("PlaneMesh_64hhp")
+surface_material_override/0 = SubResource("StandardMaterial3D_6pnph")
+script = ExtResource("9_hor7c")
+
+[node name="SubViewport" type="SubViewport" parent="MeshInstance3D2"]
+size = Vector2i(1920, 1080)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MeshInstance3D2/SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MeshInstance3D2/SubViewport/SubViewportContainer"]
+layout_mode = 2
+stream = ExtResource("10_um046")
+autoplay = true
+expand = true
+loop = true
