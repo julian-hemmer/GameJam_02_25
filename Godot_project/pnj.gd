@@ -122,11 +122,14 @@ func check_for_interaction():
 			var collision_shape = $CollisionShape3D
 			collision_shape.disabled = true
 			death_audio_player.play()
-		if Input.is_key_pressed(KEY_M):  # Default "ui_accept" is Enter or E
+		if Input.is_action_just_pressed("ui_up"):  # Default "ui_accept" is Enter or E
 			var random_index = randi() % interaction_message.size()
 			show_message(interaction_message[random_index])
-			interaction_audio_player.stream = interaction_sound[random_index]
-			interaction_audio_player.play()
+			var audio_player = AudioStreamPlayer.new()
+			add_child(audio_player)  # Add the player to the scene tree
+			audio_player.stream = interaction_sound[random_index]
+			audio_player.play()
+			audio_player.connect("finished", _on_audio_finished.bind(audio_player))
 	else:
 		is_near_npc = false
 
@@ -139,3 +142,8 @@ func show_message(message: String):
 func _on_message_timeout():
 	# Hide the message after 5 seconds
 	message_label.visible = false
+	
+# Signal handler that frees the AudioStreamPlayer after the sound finishes
+func _on_audio_finished(audio_player: AudioStreamPlayer):
+	# Free the AudioStreamPlayer when the sound finishes
+	audio_player.queue_free()
