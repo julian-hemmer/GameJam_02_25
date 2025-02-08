@@ -21,8 +21,8 @@ var switch_timer : float = 0.0
 @export var death_message: String = "JE MEURT"
 var death_audio_player: AudioStreamPlayer
 
-@export var interaction_sound: AudioStream
-@export var interaction_message: String = "Tu es raciste ?"
+@export var interaction_sound: Array[AudioStream]
+@export var interaction_message: Array[String]
 var interaction_audio_player: AudioStreamPlayer
 
 
@@ -38,7 +38,6 @@ var is_near_npc = false
 func _ready():
 	interaction_audio_player = AudioStreamPlayer.new()
 	add_child(interaction_audio_player)
-	interaction_audio_player.stream = interaction_sound
 	
 	death_audio_player = AudioStreamPlayer.new()
 	add_child(death_audio_player)
@@ -124,7 +123,9 @@ func check_for_interaction():
 			collision_shape.disabled = true
 			death_audio_player.play()
 		if Input.is_key_pressed(KEY_M):  # Default "ui_accept" is Enter or E
-			show_message(interaction_message)
+			var random_index = randi() % interaction_message.size()
+			show_message(interaction_message[random_index])
+			interaction_audio_player.stream = interaction_sound[random_index]
 			interaction_audio_player.play()
 	else:
 		is_near_npc = false
