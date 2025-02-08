@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://t5k2vh8maqhw"]
+
+[ext_resource type="Script" path="res://pnj.gd" id="1_8mh4q"]
+[ext_resource type="Script" path="res://mesh_instance_3d.gd" id="1_tnbtu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r8tgc"]
+friction = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_b8h8c"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pkou0"]
+radius = 1.0
+
+[node name="PNJ" type="RigidBody3D"]
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_r8tgc")
+script = ExtResource("1_8mh4q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_b8h8c")
+script = ExtResource("1_tnbtu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_pkou0")
