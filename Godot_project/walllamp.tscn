@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3nrubroxt440"]
+
+[ext_resource type="ArrayMesh" uid="uid://chq7s567wasa6" path="res://assets/objects/kenney_furniture-kit/Models/OBJ format/lampWall.obj" id="1_06r5s"]
+[ext_resource type="Script" path="res://lamp.gd" id="2_tt35k"]
+
+[node name="applique" type="MeshInstance3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("1_06r5s")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.837442, 0.546526, 0, -0.546526, 0.837442, 0, 0, 0)
+light_color = Color(1, 1, 0.6, 1)
+light_energy = 5.0
+spot_range = 10.0
+script = ExtResource("2_tt35k")

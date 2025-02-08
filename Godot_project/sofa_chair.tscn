@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0ioj8cy5c6sc"]
+
+[ext_resource type="ArrayMesh" uid="uid://dko55ux0u2vj8" path="res://assets/objects/kenney_furniture-kit/Models/OBJ format/loungeChair.obj" id="1_ewr8m"]
+
+[node name="sofa_chair" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_ewr8m")
