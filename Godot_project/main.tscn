@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://d28s7ptnux27g"]
+[gd_scene load_steps=40 format=3 uid="uid://d28s7ptnux27g"]
 
 [ext_resource type="Texture2D" uid="uid://b6jpb2ceac2ah" path="res://assets/concrete_floor_worn_001_2k.blend/textures/concrete_floor_worn_001_diff_2k.jpg" id="1_as1tl"]
 [ext_resource type="Script" path="res://character_body_3d.gd" id="1_fv0bn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dulstcntu15d5" path="res://assets/epitech_kake2.jpg" id="4_gbkr1"]
 [ext_resource type="PackedScene" uid="uid://dqbfhohly5qvv" path="res://table.tscn" id="6_4a0ny"]
 [ext_resource type="ArrayMesh" uid="uid://c8meofhsn6vs6" path="res://assets/objects/kenney_furniture-kit/Models/OBJ format/televisionModern.obj" id="6_l4hqr"]
+[ext_resource type="Texture2D" uid="uid://dhdl4rdbilgdg" path="res://assets/tileceil.jpg" id="6_n0mi8"]
 [ext_resource type="PackedScene" uid="uid://csg02fpn8dtky" path="res://door.tscn" id="7_2q8uk"]
 [ext_resource type="PackedScene" uid="uid://lv24m3k7fvv6" path="res://chair.tscn" id="7_05y1j"]
 [ext_resource type="PackedScene" uid="uid://c52kj4sokd757" path="res://plant.tscn" id="10_prucm"]
@@ -53,6 +54,10 @@ albedo_texture = ExtResource("4_fhwio")
 uv1_scale = Vector3(20, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_psjc6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqp6p"]
+albedo_texture = ExtResource("6_n0mi8")
+uv1_scale = Vector3(40, 40, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv01l"]
 albedo_texture = ExtResource("4_fhwio")
@@ -166,6 +171,17 @@ surface_material_override/0 = SubResource("StandardMaterial3D_0fcl5")
 [node name="StaticBody3D" type="StaticBody3D" parent="room/gondor/walls/wall2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="room/gondor/walls/wall2/StaticBody3D"]
+shape = SubResource("BoxShape3D_psjc6")
+
+[node name="ceil" type="MeshInstance3D" parent="room/gondor/walls"]
+transform = Transform3D(-1.18683e-06, 0, 33.9954, 0, 0.0960464, 0, -27.1515, 0, -1.48599e-06, -26.3964, 4.04236, -3.55445)
+mesh = SubResource("BoxMesh_h3rf0")
+skeleton = NodePath("../../../floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_lqp6p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="room/gondor/walls/ceil"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room/gondor/walls/ceil/StaticBody3D"]
 shape = SubResource("BoxShape3D_psjc6")
 
 [node name="wall3" type="MeshInstance3D" parent="room/gondor/walls"]
@@ -570,7 +586,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_0fcl5")
 shape = SubResource("BoxShape3D_psjc6")
 
 [node name="TelevisionModern" type="MeshInstance3D" parent="room/gondor/walls"]
-transform = Transform3D(-3.79622e-07, 0, -1, 0, 5.00148, 0, 8.68475, 0, -4.37114e-08, -42.5126, 1.12067, -2.70354)
+transform = Transform3D(-5.03254e-07, 0, -1, 0, 6.88153, 0, 11.5131, 0, -4.37114e-08, -42.5126, 0.699037, -2.70354)
 mesh = ExtResource("6_l4hqr")
 skeleton = NodePath("../../..")
 
@@ -917,7 +933,7 @@ mass = 3.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9977, 0.365293, -0.881563)
 
 [node name="cube2" parent="room/gondor/tables_chairs" instance=ExtResource("11_p1jo4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9977, 0.365293, -1.91127)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9977, 0.560633, -1.91127)
 
 [node name="cube3" parent="room/gondor/tables_chairs" instance=ExtResource("11_p1jo4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9977, 0.365293, -2.95783)
@@ -1009,6 +1025,120 @@ transform = Transform3D(-1, 0, 0.000872791, 0, 1, 0, -0.000872791, 0, -1, -22.88
 [node name="laptop3" parent="room/gondor/tables_chairs" instance=ExtResource("14_21fq4")]
 transform = Transform3D(-0.986717, 0, -0.162448, 0, 1, 0, 0.162448, 0, -0.986717, -29.3059, 1.01089, 2.95078)
 
+[node name="Node3D" type="Node3D" parent="room/gondor"]
+
+[node name="light1" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -22.1072, 3.90432, 6.45732)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light2" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -27.234, 3.90432, 6.45732)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light3" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -32.3365, 3.90432, 6.45732)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light4" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -37.3641, 3.90432, 6.45732)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light5" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -22.1072, 3.90432, -1.79186)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light6" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -27.234, 3.90432, -1.79186)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light7" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -32.3365, 3.90432, -1.79186)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light8" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -37.3641, 3.90432, -1.79186)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light9" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -22.1072, 3.90432, -9.94002)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light10" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -27.234, 3.90432, -9.94002)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light11" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -32.3365, 3.90432, -9.94002)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light12" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -37.3641, 3.90432, -9.94002)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light13" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -22.1072, 3.90432, -16.3339)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light14" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -27.234, 3.90432, -16.3339)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light15" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -32.3365, 3.90432, -16.3339)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
+[node name="light16" type="SpotLight3D" parent="room/gondor/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -37.3641, 3.90432, -16.3339)
+light_color = Color(1, 1, 0.564706, 1)
+light_energy = 5.0
+spot_range = 10.0
+spot_angle = 90.0
+
 [node name="003" type="Node3D" parent="room"]
 
 [node name="walls" type="Node3D" parent="room/003"]
@@ -1050,7 +1180,7 @@ transform = Transform3D(-0.810113, 0, -0.586273, 0, 1, 0, 0.586273, 0, -0.810113
 transform = Transform3D(0.744929, 0, -0.667144, 0, 1, 0, 0.667144, 0, 0.744929, -21.3257, 0.159372, -26.9718)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8161, 4.90969, 2.44812)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8161, 3.82478, 2.44812)
 script = ExtResource("1_fv0bn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]

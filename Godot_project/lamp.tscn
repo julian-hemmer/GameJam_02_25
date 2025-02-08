@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhusdh28mmv8f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_teiw2"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(2, 0, 0, 0, 0.037, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("BoxMesh_teiw2")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.5155e-08, 26.9135, 0, -1.03303, -1.17643e-06, 0, 0, 0)
+light_color = Color(1, 1, 0.72549, 1)
+light_energy = 10.0
+spot_range = 20.0
+spot_angle = 75.3
