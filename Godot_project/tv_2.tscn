@@ -1,26 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://6pjcimsk0e6o"]
+[gd_scene load_steps=4 format=3 uid="uid://6pjcimsk0e6o"]
 
-[ext_resource type="Script" path="res://tv_2.gd" id="1_seinh"]
+[ext_resource type="Script" path="res://TV3D.gd" id="1_mn5m5"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_del64"]
-orientation = 0
+[sub_resource type="PlaneMesh" id="PlaneMesh_lld53"]
 
-[node name="TV_2" type="Node3D"]
-script = ExtResource("1_seinh")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4um4c"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_del64")
+[node name="MeshInstance3D" type="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_lld53")
+surface_material_override/0 = SubResource("StandardMaterial3D_4um4c")
+script = ExtResource("1_mn5m5")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SubViewport"]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-disable_3d = true
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 4
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="SubViewportContainer/SubViewport"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="SubViewport/SubViewportContainer"]
+layout_mode = 2
+loop = true

@@ -1,21 +1,19 @@
 extends RigidBody3D
 
+@export var texture: Texture  # Texture unique pour ce NPC
+
 # Define the two positions between which the NPC should move
 @export var target_position_1 : Vector3
 @export var target_position_2 : Vector3
 
 # The time to move between the two positions (in seconds)
-@export var time_to_move : float = 3.0  # Time in seconds to move from one position to another
+@export var time_to_move : float = 3.0
 
 # Current target position
 var target_position : Vector3
 
-# Timer to switch between targets
-var switch_timer : float = 0.0
-
 @export var camera: Camera3D
-@export var texture: Texture
-@export var interaction_distance: float = 5.0  # The distance within which the player can interact with the NPC
+@export var interaction_distance: float = 5.0
 
 @export var death_sound: AudioStream
 @export var death_message: String = "JE MEURT"
@@ -25,14 +23,8 @@ var death_audio_player: AudioStreamPlayer
 @export var interaction_message: Array[String]
 var interaction_audio_player: AudioStreamPlayer
 
-
-# Node to display the message on the screen
-@export var message_label: Label  # Drag and drop the Label node into this variable in the editor
-
-# Timer to hide the message
+@export var message_label: Label
 var message_timer: Timer
-
-# Whether the player is close enough to interact
 var is_near_npc = false
 
 func _ready():
@@ -42,18 +34,22 @@ func _ready():
 	death_audio_player = AudioStreamPlayer.new()
 	add_child(death_audio_player)
 	death_audio_player.stream = death_sound
-	# Initialize the two positions (set them in the editor or here)
+	
+	# Initialize the positions
 	global_transform.origin = target_position_1
-
-	# Start at target position 1
 	target_position = target_position_2
 
 	# Initialize the message timer
 	message_timer = Timer.new()
 	add_child(message_timer)
 	message_timer.connect("timeout", _on_message_timeout)
-	message_timer.start(5.0)  # Set it to hide the message after 5 seconds
-	message_label.visible = false  # Hide the message initially
+	message_timer.start(5.0)
+	message_label.visible = false
+	
+	# Appliquer la texture unique au MeshInstance3D enfant
+	var mesh_instance = $MeshInstance3D
+	if mesh_instance:
+		mesh_instance.apply_texture(texture)
 
 func is_after(start_position, end_position, direction):
 	var normalized_direction = direction.normalized()
@@ -75,7 +71,7 @@ func _process(delta):
 	direction = direction.normalized()  # Normalize to get a unit vector
 
 	# Check if the NPC has reached the current target
-	if global_transform.origin.distance_to(target_position) <= 0.1:  # Small tolerance to switch
+	if global_transform.origin.distance_to(target_position) <= 1:  # Small tolerance to switch
 		# Switch to the other target position
 		target_position = get_other()
 
@@ -122,7 +118,7 @@ func check_for_interaction():
 			var collision_shape = $CollisionShape3D
 			collision_shape.disabled = true
 			death_audio_player.play()
-		if Input.is_action_just_pressed("ui_up"):  # Default "ui_accept" is Enter or E
+		if Input.is_action_just_pressed("ui_f"):  # Default "ui_accept" is Enter or E
 			var random_index = randi() % interaction_message.size()
 			show_message(interaction_message[random_index])
 			var audio_player = AudioStreamPlayer.new()

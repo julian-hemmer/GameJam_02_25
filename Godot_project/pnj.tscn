@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://t5k2vh8maqhw"]
+[gd_scene load_steps=6 format=3 uid="uid://qr0gencx6igu"]
 
 [ext_resource type="Script" path="res://pnj.gd" id="1_8mh4q"]
+[ext_resource type="Script" path="res://mesh_instance_3d.gd" id="2_cbn3c"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r8tgc"]
 friction = 0.25
@@ -17,6 +18,7 @@ script = ExtResource("1_8mh4q")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_b8h8c")
+script = ExtResource("2_cbn3c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_pkou0")
