@@ -8,6 +8,9 @@ extends CharacterBody3D
 @onready var camera = $Camera3D
 @onready var mesh = $MeshInstance3D  # Assure-toi que le MeshInstance3D est bien un enfant
 
+@export var no_anomaly_zone: MeshInstance3D
+@export var has_anomaly_zone: MeshInstance3D
+
 var camera_rotation_x = 0.0
 var camera_rotation_y = 0.0
 var is_mouse_captured = true
@@ -55,6 +58,13 @@ func _physics_process(delta):
 
 	# Appliquer la rotation caméra + Mesh
 	_handle_camera_rotation(delta)
+	
+	if is_player_in_cylinder(no_anomaly_zone):
+		print("in no anomaly zone")
+		return
+	if is_player_in_cylinder(has_anomaly_zone):
+		print("in anomaly zone")
+		return
 
 func _handle_camera_rotation(delta):
 	var mouse_movement = Input.get_last_mouse_velocity() * camera_sensitivity
@@ -69,3 +79,14 @@ func _handle_camera_rotation(delta):
 
 	# Tourner le joueur (et donc le MeshInstance3D)
 	rotation_degrees.y = camera_rotation_y
+	
+# Function to check if the player is inside the cylinder
+func is_player_in_cylinder(cylinder_mesh: MeshInstance3D) -> bool:
+	var player_pos = camera.global_transform.origin
+	var cylinder_pos = cylinder_mesh.global_transform.origin
+	var meshs: CylinderMesh = cylinder_mesh.mesh  # Use x scale to represent the radius (assuming uniform scaling)
+	var radius = meshs.top_radius  # Use x scale to represent the radius (assuming uniform scaling)
+	var distance = (player_pos.x - cylinder_pos.x) ** 2 + (player_pos.z - cylinder_pos.z) ** 2
+	if distance <= radius * radius:
+		return true
+	return false
