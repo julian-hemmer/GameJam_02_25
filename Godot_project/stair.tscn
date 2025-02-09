@@ -11,7 +11,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0802674)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(3.45, 0, 0, 0, 0.0174924, -0.853265, 0, 0.00969619, 1.53933, 0.01, 0.327509, -1.28819)
-visible = false
 mesh = SubResource("BoxMesh_kvvww")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
@@ -56,7 +55,7 @@ transform = Transform3D(3.44, 0, 0, 0, 0.245, 0, 0, 0, 0.375, 0, 0.462145, -1.60
 mesh = SubResource("BoxMesh_5rfni")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
-transform = Transform3D(3.44, 0, 0, 0, 0.245, 0, 0, 0, 0.375, 0, 0.625237, -1.92104)
+transform = Transform3D(3.44, 0, 0, 0, 0.245, 0, 0, 0, 0.31, 0, 0.625237, -1.88883)
 mesh = SubResource("BoxMesh_5rfni")
 
 [node name="MeshInstance3D14" type="MeshInstance3D" parent="."]
