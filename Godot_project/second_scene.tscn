@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dafp7fg80k45d"]
+[gd_scene load_steps=41 format=3 uid="uid://dafp7fg80k45d"]
 
 [ext_resource type="Texture2D" uid="uid://ieevmlab147g" path="res://assets/plastered_wall_2k.blend/textures/plastered_wall_diff_2k.jpg" id="1_0p2sv"]
 [ext_resource type="Texture2D" uid="uid://d3cnr6k425pam" path="res://assets/image-removebg-preview.png" id="2_3a8ml"]
@@ -23,10 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://do70puo4k5oig" path="res://coachrack.tscn" id="16_gt8u3"]
 [ext_resource type="PackedScene" uid="uid://bbv48rfuarl3a" path="res://library.tscn" id="16_o1xiv"]
 [ext_resource type="PackedScene" uid="uid://bu4rckckq6qv1" path="res://modern_chair.tscn" id="17_0fb5b"]
-[ext_resource type="Texture2D" uid="uid://chmc0y675v1in" path="res://assets/ntm/wall_of_partner.jpg" id="17_ny1ps"]
-[ext_resource type="Texture2D" uid="uid://c8l2adcrqcw2m" path="res://assets/ntm/wallfake.jpg" id="18_gpfgu"]
-[ext_resource type="Texture2D" uid="uid://cjprhrya6stpu" path="res://assets/ntm/books_peitech_error.jpg.jpg" id="26_y4d5u"]
-[ext_resource type="Texture2D" uid="uid://ce2yvojia44fi" path="res://assets/ntm/books_peitech_no_error.jpg" id="27_sccso"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2c8x2"]
 
@@ -76,14 +72,6 @@ uv1_scale = Vector3(30, 30, 30)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f1xsk"]
 points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_0udeg"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5pjum"]
-albedo_texture = ExtResource("17_ny1ps")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpg8o"]
-albedo_texture = ExtResource("18_gpfgu")
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_64hhp"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ya4ml"]
@@ -92,14 +80,6 @@ viewport_path = NodePath("MeshInstance3D/SubViewport")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pnph"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_ya4ml")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfwpi"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("26_y4d5u")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1bka"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("27_sccso")
 
 [node name="Node3D" type="Node3D"]
 
@@ -829,16 +809,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0717, 1.02161, -1.6655)
 [node name="MeshInstance3D4" parent="Stuffs" instance=ExtResource("16_gt8u3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2312, 1.02161, 10.9531)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Stuffs"]
-transform = Transform3D(2.00937, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.79186, 2.72038, -14.4958)
-mesh = SubResource("PlaneMesh_0udeg")
-surface_material_override/0 = SubResource("StandardMaterial3D_5pjum")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Stuffs"]
-transform = Transform3D(2.00937, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.90234, 2.72038, -14.4958)
-mesh = SubResource("PlaneMesh_0udeg")
-surface_material_override/0 = SubResource("StandardMaterial3D_jpg8o")
-
 [node name="sofa" parent="." instance=ExtResource("7_0hlir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.63283, 1.09874, -8.82298)
 
@@ -876,46 +846,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MeshInstance3D2/SubViewport/SubViewportContainer"]
-layout_mode = 2
-stream = ExtResource("10_um046")
-autoplay = true
-expand = true
-loop = true
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.761985, 0, 0, 0, -4.35874e-08, -1.3687, 0, 0.997163, -5.98278e-08, 10.8125, 2.45736, 0.000833035)
-mesh = SubResource("PlaneMesh_64hhp")
-surface_material_override/0 = SubResource("StandardMaterial3D_mfwpi")
-script = ExtResource("9_hor7c")
-
-[node name="SubViewport" type="SubViewport" parent="MeshInstance3D3"]
-size = Vector2i(1920, 1080)
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="MeshInstance3D3/SubViewport"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MeshInstance3D3/SubViewport/SubViewportContainer"]
-layout_mode = 2
-stream = ExtResource("10_um046")
-autoplay = true
-expand = true
-loop = true
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.761985, 0, 0, 0, -4.35874e-08, -1.3687, 0, 0.997163, -5.98278e-08, 9.20781, 2.45736, 0.000833035)
-mesh = SubResource("PlaneMesh_64hhp")
-surface_material_override/0 = SubResource("StandardMaterial3D_e1bka")
-script = ExtResource("9_hor7c")
-
-[node name="SubViewport" type="SubViewport" parent="MeshInstance3D4"]
-size = Vector2i(1920, 1080)
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="MeshInstance3D4/SubViewport"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MeshInstance3D4/SubViewport/SubViewportContainer"]
 layout_mode = 2
 stream = ExtResource("10_um046")
 autoplay = true
