@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://do70puo4k5oig"]
+
+[ext_resource type="ArrayMesh" uid="uid://digpwn6q8ug1m" path="res://assets/objects/kenney_furniture-kit/Models/OBJ format/coatRackStanding.obj" id="1_r2xi5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_acygh"]
+points = PackedVector3Array(-0.1364, 3.07769e-29, -0.0204279, -0.0204279, 3.07769e-29, -0.1364, -0.1364, 3.07769e-29, 0.0203746, -0.122408, 0.623778, -0.0102006, 0.0203746, 3.07769e-29, -0.1364, -0.0102006, 0.623778, -0.122408, -0.0204279, 3.07769e-29, 0.136373, -0.122408, 0.623778, 0.0101739, -0.108816, 0.756358, -0.0102006, 0.136373, 3.07769e-29, -0.0204279, 0.0101739, 0.623778, -0.122408, -0.0102006, 0.756358, -0.108816, 0.0203746, 3.07769e-29, 0.136373, -0.0102006, 0.623778, 0.122381, -0.108816, 0.756358, 0.0101739, -0.0952236, 0.77, -0.0102006, 0.136373, 3.07769e-29, 0.0203746, 0.122381, 0.623778, -0.0102006, 0.0101739, 0.756358, -0.108816, -0.0102006, 0.77, -0.0952236, 0.0101739, 0.623778, 0.122381, -0.0102006, 0.756358, 0.108789, -0.0952236, 0.77, 0.0101739, 0.122381, 0.623778, 0.0101739, 0.108789, 0.756358, -0.0102006, 0.0101739, 0.77, -0.0952236, 0.108789, 0.756358, 0.0103876, 0.0101739, 0.756358, 0.108789, -0.0102006, 0.77, 0.095197, 0.095197, 0.77, -0.0102006, 0.095197, 0.77, 0.0103876, 0.0101739, 0.77, 0.095197)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 6
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = ExtResource("1_r2xi5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_acygh")

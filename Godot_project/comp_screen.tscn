@@ -6,6 +6,8 @@
 size = Vector3(0.790771, 0.644043, 0.228943)
 
 [node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 6
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dafp7fg80k45d"]
+[gd_scene load_steps=34 format=3 uid="uid://dafp7fg80k45d"]
 
 [ext_resource type="Texture2D" uid="uid://ieevmlab147g" path="res://assets/plastered_wall_2k.blend/textures/plastered_wall_diff_2k.jpg" id="1_0p2sv"]
 [ext_resource type="Texture2D" uid="uid://d3cnr6k425pam" path="res://assets/image-removebg-preview.png" id="2_3a8ml"]
@@ -13,7 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://d0ioj8cy5c6sc" path="res://sofa_chair.tscn" id="8_etx68"]
 [ext_resource type="Script" path="res://tv.gd" id="9_hor7c"]
 [ext_resource type="VideoStream" path="res://assets/music/skibidi.ogv" id="10_um046"]
+[ext_resource type="PackedScene" uid="uid://o51atjkfpdrt" path="res://comp_keyboard.tscn" id="11_c4uec"]
 [ext_resource type="PackedScene" uid="uid://bgs3gkmdtitgh" path="res://comp_screen.tscn" id="11_g855a"]
+[ext_resource type="PackedScene" uid="uid://knpl3a0xlej1" path="res://comp_mouse.tscn" id="12_pjfp5"]
+[ext_resource type="PackedScene" uid="uid://ps4ysulua54p" path="res://laptop.tscn" id="13_uxblc"]
+[ext_resource type="PackedScene" uid="uid://do70puo4k5oig" path="res://coachrack.tscn" id="16_gt8u3"]
+[ext_resource type="PackedScene" uid="uid://bbv48rfuarl3a" path="res://library.tscn" id="16_o1xiv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2c8x2"]
 
@@ -179,6 +184,18 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vy41c")
 [node name="StaticBody3D" type="StaticBody3D" parent="walls/wall32"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall32/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00683594)
+shape = SubResource("BoxShape3D_netrn")
+
+[node name="wall37" type="MeshInstance3D" parent="walls"]
+transform = Transform3D(-1.14456e-07, 0, -1, 0, 4.66848, 0, 2.61844, 0, -4.37114e-08, -7.83545, 1.66565, -2.27907)
+mesh = SubResource("BoxMesh_s6qfh")
+skeleton = NodePath("../../../floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_vy41c")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="walls/wall37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall37/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00683594)
 shape = SubResource("BoxShape3D_netrn")
 
@@ -627,6 +644,48 @@ transform = Transform3D(0.12606, 0, -0.992023, 0, 1, 0, 0.992023, 0, 0.12606, 1.
 [node name="table5" parent="Stuffs" instance=ExtResource("5_kyaj4")]
 transform = Transform3D(0.0157945, 0, -0.999875, 0, 1, 0, 0.999875, 0, 0.0157945, 2.71961, 1.04425, -17.5819)
 
+[node name="RigidBody3D" parent="Stuffs/table5" instance=ExtResource("11_g855a")]
+transform = Transform3D(-0.988501, 0, -0.151227, 0, 1, 0, 0.151227, 0, -0.988501, -1.90594, 0.98185, 0.536395)
+
+[node name="keyboard" parent="Stuffs/table5" instance=ExtResource("11_c4uec")]
+transform = Transform3D(-0.999637, 0, -0.0269971, 0, 1, 0, 0.0269971, 0, -0.999637, -1.69886, 0.987908, 0.903719)
+
+[node name="mouse" parent="Stuffs/table5" instance=ExtResource("12_pjfp5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.918781, 0.974578, 0.690155)
+
+[node name="laptop" parent="Stuffs/table5" instance=ExtResource("13_uxblc")]
+transform = Transform3D(-0.671825, 0, 0.740712, 0, 1, 0, -0.740712, 0, -0.671825, -2.16417, 0.990657, 0.638092)
+
+[node name="RigidBody3D2" parent="Stuffs/table5" instance=ExtResource("16_o1xiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02241, 0, -8.62929)
+
+[node name="books" parent="Stuffs/table5/RigidBody3D2" instance=ExtResource("7_50hkk")]
+transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 0, 1.86265e-09, 0, 1, 0, 1.58818, 0)
+
+[node name="books2" parent="Stuffs/table5/RigidBody3D2" instance=ExtResource("7_50hkk")]
+transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 0, 1.86265e-09, 0, 1, -0.537737, 1.58818, -0.00849438)
+
+[node name="books3" parent="Stuffs/table5/RigidBody3D2" instance=ExtResource("7_50hkk")]
+transform = Transform3D(1, 0, -3.72529e-09, 0, 1, 0, 3.72529e-09, 0, 1, -1.08214, 1.58818, -0.0170937)
+
+[node name="books4" parent="Stuffs/table5/RigidBody3D2" instance=ExtResource("7_50hkk")]
+transform = Transform3D(1, 0, -3.72529e-09, 0, 1, 0, 3.72529e-09, 0, 1, -1.08214, 1.58818, -0.0170937)
+
+[node name="books5" parent="Stuffs/table5/RigidBody3D2" instance=ExtResource("7_50hkk")]
+transform = Transform3D(1, 0, -3.72529e-09, 0, 1, 0, 3.72529e-09, 0, 1, 2.6325, 1.58818, 0.041585)
+
+[node name="books6" parent="Stuffs/table5/RigidBody3D2" instance=ExtResource("7_50hkk")]
+transform = Transform3D(1, 0, -3.72529e-09, 0, 1, 0, 3.72529e-09, 0, 1, 2.23223, 1.58818, 0.0352621)
+
+[node name="books7" parent="Stuffs/table5/RigidBody3D2" instance=ExtResource("7_50hkk")]
+transform = Transform3D(1, 0, -3.72529e-09, 0, 1, 0, 3.72529e-09, 0, 1, 1.68783, 1.58818, 0.0266619)
+
+[node name="books8" parent="Stuffs/table5/RigidBody3D2" instance=ExtResource("7_50hkk")]
+transform = Transform3D(1, 0, -3.72529e-09, 0, 1, 0, 3.72529e-09, 0, 1, 1.68783, 1.58818, 0.0266619)
+
+[node name="RigidBody3D3" parent="Stuffs/table5" instance=ExtResource("16_o1xiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83822, 0, -8.5841)
+
 [node name="sofa_chair" parent="Stuffs" instance=ExtResource("8_etx68")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11279, 10.2194)
 
@@ -639,11 +698,23 @@ transform = Transform3D(0.832564, 0, -0.553929, 0, 1, 0, 0.553929, 0, 0.832564, 
 [node name="sofa_chair4" parent="Stuffs" instance=ExtResource("8_etx68")]
 transform = Transform3D(0.630188, 0, -0.776443, 0, 1, 0, 0.776443, 0, 0.630188, -3.06401, 1.11279, 9.54345)
 
+[node name="sofa_chair5" parent="Stuffs" instance=ExtResource("8_etx68")]
+transform = Transform3D(-0.879258, 0, 0.476346, 0, 1, 0, -0.476346, 0, -0.879258, 10.7266, 1.11279, -13.6196)
+
+[node name="sofa_chair6" parent="Stuffs" instance=ExtResource("8_etx68")]
+transform = Transform3D(-0.985633, 0, -0.168902, 0, 1, 0, 0.168902, 0, -0.985633, 6.81935, 1.11279, -13.1129)
+
+[node name="sofa_chair7" parent="Stuffs" instance=ExtResource("8_etx68")]
+transform = Transform3D(-0.860937, 0, 0.508711, 0, 1, 0, -0.508711, 0, -0.860937, 3.13347, 1.11279, -13.413)
+
 [node name="books" parent="Stuffs" instance=ExtResource("7_50hkk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.98692, 8.18192)
 
 [node name="RigidBody3D6" parent="Stuffs" instance=ExtResource("11_g855a")]
 transform = Transform3D(-0.972646, 0, -0.232291, 0, 1, 0, 0.232291, 0, -0.972646, 4.89102, 2.25487, 8.15425)
+
+[node name="MeshInstance3D" parent="Stuffs" instance=ExtResource("16_gt8u3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0717, 1.02161, -1.6655)
 
 [node name="sofa" parent="." instance=ExtResource("7_0hlir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.63283, 1.09874, -8.82298)

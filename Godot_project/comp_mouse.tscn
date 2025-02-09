@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://knpl3a0xlej1"]
+
+[ext_resource type="ArrayMesh" uid="uid://c3dkmwnprr33p" path="res://assets/objects/kenney_furniture-kit/Models/OBJ format/computerMouse.obj" id="1_2j5hl"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2vefq"]
+points = PackedVector3Array(0.02485, 0.023572, 0.059546, 0.02485, 0, 0.059546, 0.02485, 0.0153324, 0.0228837, -0.02485, 0.023572, 0.059546, 0.0243246, 0.023572, 0.0660604, 0.0243246, 0, 0.0660604, 0.02485, 0, 0.0228837, 0.0124201, 0, 0, -0.02485, 0.0153324, 0.0228837, -0.0243295, 0.023572, 0.0660604, -0.02485, 0, 0.059546, 0.0220235, 0.023572, 0.0722083, 0.0220235, 0, 0.0722083, -0.0124299, 0, 0, -0.02485, 0, 0.0228837, -0.0220283, 0.023572, 0.0722083, -0.0243295, 0, 0.0660604, 0.0181024, 0.023572, 0.0775231, 0.0181024, 0, 0.0775231, -0.0181121, 0.023572, 0.0775231, -0.0220283, 0, 0.0722083, 0.012858, 0.023572, 0.08163, 0.012858, 0, 0.08163, -0.0128677, 0.023572, 0.08163, -0.0181121, 0, 0.0775231, 0.00667467, 0.023572, 0.0842124, 0.00667467, 0, 0.0842124, -0.00667953, 0.023572, 0.0842124, -0.0128677, 0, 0.08163, -4.86523e-06, 0.023572, 0.0851038, -4.86523e-06, 0, 0.0851038, -0.00667953, 0, 0.0842124)
+
+[node name="mouse" type="RigidBody3D"]
+collision_layer = 6
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("1_2j5hl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_2vefq")
