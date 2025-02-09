@@ -11,14 +11,43 @@ extends CharacterBody3D
 @export var no_anomaly_zone: MeshInstance3D
 @export var has_anomaly_zone: MeshInstance3D
 
+@export var anomaly_has_anomaly_zone_position: Vector3
+@export var anomaly_no_anomaly_zone_position: Vector3
+@export var anomaly_spawn_position: Vector3
+
+@export var no_anomaly_has_anomaly_zone_position: Vector3
+@export var no_anomaly_no_anomaly_zone_position: Vector3
+@export var no_anomaly_spawn_position: Vector3
+
+@export var message_label: Label
+
+var is_in_anomaly: bool = false
+var score = 0
+
 var camera_rotation_x = 0.0
 var camera_rotation_y = 0.0
 var is_mouse_captured = true
 
+func update_state():
+	is_in_anomaly = randi() % 2 == 0
+	if is_in_anomaly:
+		print("Is in anomaly")
+		global_transform.origin = anomaly_spawn_position
+		no_anomaly_zone.global_transform.origin = anomaly_no_anomaly_zone_position
+		has_anomaly_zone.global_transform.origin = anomaly_has_anomaly_zone_position
+	else:
+		print("Is not in anomaly")
+		global_transform.origin = no_anomaly_spawn_position
+		no_anomaly_zone.global_transform.origin = no_anomaly_no_anomaly_zone_position
+		has_anomaly_zone.global_transform.origin = no_anomaly_has_anomaly_zone_position
+
 func _ready():
+	update_state()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
+	message_label.text = String("Score: {0}").format([score])
+	message_label.visible = true
 	# Gestion de la souris (ESC pour la libérer/capturer)
 	if Input.is_action_just_pressed("ui_cancel"):
 		is_mouse_captured = !is_mouse_captured
@@ -60,10 +89,17 @@ func _physics_process(delta):
 	_handle_camera_rotation(delta)
 	
 	if is_player_in_cylinder(no_anomaly_zone):
-		print("in no anomaly zone")
-		return
+		if is_in_anomaly:
+			score = 0
+		else:
+			score += 1
+		update_state()
 	if is_player_in_cylinder(has_anomaly_zone):
-		print("in anomaly zone")
+		if is_in_anomaly:
+			score += 1
+		else:
+			score = 0
+		update_state()
 		return
 
 func _handle_camera_rotation(delta):
